@@ -6,7 +6,7 @@
 /*   By: lomeress <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/05 15:38:38 by lomeress          #+#    #+#             */
-/*   Updated: 2019/03/11 13:25:32 by lomeress         ###   ########.fr       */
+/*   Updated: 2019/03/11 13:31:42 by lomeress         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,10 +60,10 @@ int main(int ac, char **av)
 	fe = 0;
 
 	t_obj obj = parse(av[1], &ve, &fe);
-	if(ac == 0 || ac > 2)
+/*	if(ac == 0 || ac > 2)
 	{
 		obj = parse("../../../Downloads/resources/42.obj", &ve, &fe);
-	}
+	}*/
 
 	const GLfloat *v = obj.vertex;
 	const GLuint *f = obj.indices;
