@@ -24,14 +24,14 @@ float		g_intensity;
 
 void	handletime(void)
 {
-	static float	lastframe = 0.0f;
+	static float	lastFrame = 0.0f;
 	float			currentFrame;
 	static float	second = 0.0f;
 	static int		fps = 0;
 
 	currentFrame = glfwGetTime();
-	g_delta_time = currentFrame - lastframe;
-	lastframe = currentFrame;
+	g_delta_time = currentFrame - lastFrame;
+	lastFrame = currentFrame;
 	second += g_delta_time;
 	fps++;
 	if (second >= 1.0f)
