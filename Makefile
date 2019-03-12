@@ -6,7 +6,7 @@
 #    By: lomeress <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/03/05 15:34:26 by lomeress          #+#    #+#              #
-#    Updated: 2019/03/12 16:27:47 by lomeress         ###   ########.fr        #
+#    Updated: 2019/03/12 21:24:48 by lomeress         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ OBJ_PATH = ./obj/
 LIB_PATH = ./lib/
 INC_PATH = ./include/ $(LIB_PATH)libft/include/ $(LIB_PATH)glfw/include/
 
-GCC_FLGS = #-Werror -Wextra -Wall
+GCC_FLGS = -Werror -Wextra -Wall
 GCC_LIBS = -g -lglfw3 -framework AppKit -framework OpenGL -framework IOKit -framework CoreVideo
 
 SRC_NAME = main.c shader.c matrice.c matrice2.c event.c parsing.c parsing2.c texture.c

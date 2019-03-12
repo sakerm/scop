@@ -6,7 +6,7 @@
 /*   By: lomeress <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/12 18:24:19 by lomeress          #+#    #+#             */
-/*   Updated: 2019/03/12 18:35:07 by lomeress         ###   ########.fr       */
+/*   Updated: 2019/03/12 21:24:35 by lomeress         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,6 +110,24 @@ typedef struct		s_buffer_objects
 	GLuint			vao;
 }					t_buffer_objects;
 
+typedef	struct		s_norm
+{
+	GLFWwindow      *window;
+	GLuint          vaoid;
+	GLuint          vboid;
+	GLuint          iboid;
+	GLuint          programid;
+	GLuint          matriceid;
+	int             ve;
+	int             fe;
+	GLfloat			*v;
+	const GLuint    *f;
+	t_obj           obj;
+	GLuint          intensity;
+	GLuint          textureoupasid;
+	GLuint          texture_id;
+}					t_norm;
+
 extern t_mat4		g_matrix;
 extern t_mat4		g_translation;
 extern t_inputs		g_inputs;
@@ -131,10 +149,10 @@ t_mat4				rotation_matrix_z(float angle);
 t_mat4				rotation_matrix_y(float angle);
 t_mat4				rotation_matrix_x(float angle);
 void				key_callback(GLFWwindow *window, int key, int scancode,
-						int action, int mods);
+		int action, int mods);
 void				events(void);
 t_obj				parse(char *filename, int *v, int *f);
 t_obj				center(t_obj obj);
-void				center_object(float **vertex, int size);
+void				center_obj(float **vertex, int size);
 
 #endif

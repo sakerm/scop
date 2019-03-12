@@ -6,13 +6,13 @@
 /*   By: lomeress <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/06 17:09:04 by lomeress          #+#    #+#             */
-/*   Updated: 2019/03/12 18:46:22 by lomeress         ###   ########.fr       */
+/*   Updated: 2019/03/12 20:19:59 by lomeress         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "scop.h"
 
-GLfloat		*vertice(GLfloat *vertex, char *line, int *length)
+GLfloat	*vertice(GLfloat *vertex, char *line, int *length)
 {
 	int		i;
 	int		j;

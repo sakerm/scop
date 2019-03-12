@@ -6,7 +6,7 @@
 /*   By: lomeress <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/06 16:09:48 by lomeress          #+#    #+#             */
-/*   Updated: 2019/03/12 18:43:53 by lomeress         ###   ########.fr       */
+/*   Updated: 2019/03/12 20:51:54 by lomeress         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ static void	key_callback2(GLFWwindow *window, int key, int scancode,
 }
 
 void		key_callback(GLFWwindow *window, int key, int scancode, int action,
-		int mods)
+				int mods)
 {
 	if (key == 265 && action == GLFW_PRESS)
 		g_inputs.up = 1;
@@ -118,6 +118,8 @@ static void	events2(void)
 	else if (g_inputs.tback == 1)
 		g_translation = matrix_matrix_mul(g_translation,
 				translation_matrix(0.0f, 0.0f, 2.0f * g_delta_time));
+	if (g_inputs.intensityMOINS == 1 && g_intensity >= -0.95f)
+		g_intensity -= 0.01f;
 }
 
 void		events(void)
@@ -145,7 +147,5 @@ void		events(void)
 					g_delta_time));
 	if (g_inputs.intensityPLUS == 1 && g_intensity <= 0.95f)
 		g_intensity += 0.01f;
-	if (g_inputs.intensityMOINS == 1 && g_intensity >= -0.95f)
-		g_intensity -= 0.01f;
 	events2();
 }
