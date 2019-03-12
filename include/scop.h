@@ -104,6 +104,7 @@ extern GLint		g_which;
 extern t_mat4		g_translation;
 extern t_mat4		g_projection;
 
+GLuint  load_bmp(char *filename);
 char	*load_file(char *filename);
 GLuint	create_shader(char *filename, int shadertype);
 GLuint	create_program(GLuint vertex, GLuint fragment);
@@ -117,7 +118,9 @@ t_mat4  rotation_matrix_x(float angle);
 void	key_callback(GLFWwindow *window, int key, int scancode, int action,
 		int mods);
 void	events(void);
-t_obj    parse(char *filename, int *v, int *f);
-t_obj   center(t_obj obj);
+t_obj	parse(char *filename, int *v, int *f);
+t_obj	center(t_obj obj);
+void		center_object(float **vertex, int size);
+
 
 #endif

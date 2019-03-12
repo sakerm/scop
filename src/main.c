@@ -6,7 +6,7 @@
 /*   By: lomeress <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/05 15:38:38 by lomeress          #+#    #+#             */
-/*   Updated: 2019/03/11 13:31:42 by lomeress         ###   ########.fr       */
+/*   Updated: 2019/03/12 16:44:05 by lomeress         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,21 +60,18 @@ int main(int ac, char **av)
 	fe = 0;
 
 	t_obj obj = parse(av[1], &ve, &fe);
-/*	if(ac == 0 || ac > 2)
-	{
-		obj = parse("../../../Downloads/resources/42.obj", &ve, &fe);
-	}*/
 
 	const GLfloat *v = obj.vertex;
 	const GLuint *f = obj.indices;
 	g_matrix = scaling_matrix(1.0f);
 	g_translation = translation_matrix(0.0f, 0.0f, -5.0f);
 	g_projection = projection_matrix();
-
+	
+	center_obj(&v, ve);
+	
 	if (!glfwInit())
 	{
-		ft_putendl("ERROR: could not start GLFW3");
-		exit(0);
+		obj = parse("./resources/error.obj", &ve, &fe);
 	}
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
@@ -84,8 +81,7 @@ int main(int ac, char **av)
 	window = glfwCreateWindow(W, H, "scop", NULL, NULL);
 	if (!window)
 	{
-		ft_putendl("ERROR: could not open window with GLFW3");
-		exit(0);
+		obj = parse("./resources/error.obj", &ve, &fe);
 	}
 	glfwMakeContextCurrent(window);
 	glEnable(GL_DEPTH_TEST);
@@ -105,9 +101,11 @@ int main(int ac, char **av)
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER, fe * sizeof(GLfloat), f, GL_STATIC_DRAW);
 	
 	matriceID = glGetUniformLocation(programID, "mvp");
-
+	GLuint textureoupasID = glGetUniformLocation(programID, "textureoupas");
 	glfwSetKeyCallback(window, key_callback);
 
+	GLuint texture_id = load_bmp("./texture/bois.bmp");
+	
 	while (glfwWindowShouldClose(window) == 0 && glfwGetKey(window, GLFW_KEY_ESCAPE) != GLFW_PRESS)
 	{
 		events();
@@ -117,6 +115,7 @@ int main(int ac, char **av)
 		glUseProgram(programID);
 
 		glUniformMatrix4fv(matriceID, 1, GL_FALSE, matrix_matrix_mul(matrix_matrix_mul(g_matrix, g_translation), g_projection).m);
+		glUniform1i(textureoupasID, g_which);
 
 		glEnableVertexAttribArray(0);
 		glBindBuffer(GL_ARRAY_BUFFER, vboID);

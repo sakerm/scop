@@ -6,7 +6,7 @@
 /*   By: lomeress <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/06 17:09:04 by lomeress          #+#    #+#             */
-/*   Updated: 2019/03/11 13:19:30 by lomeress         ###   ########.fr       */
+/*   Updated: 2019/03/12 16:43:08 by lomeress         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ t_obj	parse(char *filename, int *v, int *f)
 	t_obj	obj;
 
 	if ((fd = open(filename, O_RDWR)) == -1)
-		ft_putstr("obj file opening failed.");
+		fd = open("./resources/error.obj", O_RDWR);
 	while(get_next_line(fd, &line) > 0)
 	{
 		if (line[0] == 'v' && line[1] == ' ')
