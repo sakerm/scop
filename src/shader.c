@@ -6,7 +6,7 @@
 /*   By: lomeress <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/05 16:32:59 by lomeress          #+#    #+#             */
-/*   Updated: 2019/03/12 16:29:52 by lomeress         ###   ########.fr       */
+/*   Updated: 2019/03/13 18:46:39 by lomeress         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,10 @@ char		*load_file(char *filename)
 	while ((r = read(fd, buf, BUFF_SIZE)))
 	{
 		buf[r] = '\0';
-		tmp = ft_strdup(file);
+		tmp = file;
 		file = ft_strjoin(file, buf);
 		free(tmp);
+		tmp = NULL;
 	}
 	close(fd);
 	return (file);

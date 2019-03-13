@@ -6,7 +6,7 @@
 /*   By: lomeress <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/12 13:50:07 by lomeress          #+#    #+#             */
-/*   Updated: 2019/03/12 16:30:03 by lomeress         ###   ########.fr       */
+/*   Updated: 2019/03/13 17:55:52 by lomeress         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 GLuint	load_bmp2(t_loadbmp l, int fd)
 {
-	GLuint			texture_id;
+	t_norm n;
 
 	l.datapos = *(int*)&(l.header[0x0A]);
 	l.image_size = *(int*)&(l.header[0x22]);
@@ -25,15 +25,17 @@ GLuint	load_bmp2(t_loadbmp l, int fd)
 	if (l.datapos == 0)
 		l.datapos = 54;
 	l.data = (unsigned char*)malloc(sizeof(unsigned char) * l.image_size);
+	printf("IMGSIZE:%u\n", (l.image_size));
 	read(fd, l.data, l.image_size);
 	close(fd);
-	glGenTextures(1, &texture_id);
-	glBindTexture(GL_TEXTURE_2D, texture_id);
+	glGenTextures(1, &n.texture_id);
+	glBindTexture(GL_TEXTURE_2D, n.texture_id);
 	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, l.width, l.height, 0, GL_BGR,
 			GL_UNSIGNED_BYTE, l.data);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-	return (texture_id);
+	free(l.data);
+	return (n.texture_id);
 }
 
 GLuint	load_bmp(char *filename)

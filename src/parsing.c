@@ -6,7 +6,7 @@
 /*   By: lomeress <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/06 17:09:04 by lomeress          #+#    #+#             */
-/*   Updated: 2019/03/12 20:19:59 by lomeress         ###   ########.fr       */
+/*   Updated: 2019/03/13 18:44:33 by lomeress         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,13 @@ GLfloat	*vertice(GLfloat *vertex, char *line, int *length)
 	i = -1;
 	while (++i < *length - 3)
 		new[i] = vertex[i];
-	free(vertex);
+	if (vertex)
+		free(vertex);
 	vertex = new;
 	j = -1;
 	while (tab[++j] != NULL)
 	{
+		j == 4 ? exit(0) : NULL;
 		vertex[*length - 3 + j] = (GLfloat)atof(tab[j]);
 		ft_strdel(&tab[j]);
 	}
@@ -94,6 +96,8 @@ t_obj	parse(char *filename, int *v, int *f)
 	char	*line;
 	t_obj	obj;
 
+	obj.vertex = NULL;
+	obj.indices = NULL;
 	if ((fd = open(filename, O_RDWR)) == -1)
 	{
 		fd = open("./resources/error.obj", O_RDWR);
@@ -110,5 +114,6 @@ t_obj	parse(char *filename, int *v, int *f)
 		}
 		ft_strdel(&line);
 	}
+	ft_strdel(&line);
 	return (obj);
 }

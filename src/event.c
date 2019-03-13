@@ -6,7 +6,7 @@
 /*   By: lomeress <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/06 16:09:48 by lomeress          #+#    #+#             */
-/*   Updated: 2019/03/12 20:51:54 by lomeress         ###   ########.fr       */
+/*   Updated: 2019/03/13 18:45:58 by lomeress         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,13 +88,13 @@ void		key_callback(GLFWwindow *window, int key, int scancode, int action,
 	else if (key == 263 && action == GLFW_RELEASE)
 		g_inputs.left = 0;
 	if (key == GLFW_KEY_B && action == GLFW_PRESS)
-		g_inputs.intensityPLUS = 1;
+		g_inputs.intensityplus = 1;
 	else if (key == GLFW_KEY_B && action == GLFW_RELEASE)
-		g_inputs.intensityPLUS = 0;
+		g_inputs.intensityplus = 0;
 	if (key == GLFW_KEY_N && action == GLFW_PRESS)
-		g_inputs.intensityMOINS = 1;
+		g_inputs.intensitymoins = 1;
 	else if (key == GLFW_KEY_N && action == GLFW_RELEASE)
-		g_inputs.intensityMOINS = 0;
+		g_inputs.intensitymoins = 0;
 	key_callback2(window, key, scancode, action, mods);
 }
 
@@ -118,7 +118,7 @@ static void	events2(void)
 	else if (g_inputs.tback == 1)
 		g_translation = matrix_matrix_mul(g_translation,
 				translation_matrix(0.0f, 0.0f, 2.0f * g_delta_time));
-	if (g_inputs.intensityMOINS == 1 && g_intensity >= -0.95f)
+	if (g_inputs.intensitymoins == 1 && g_intensity >= -0.95f)
 		g_intensity -= 0.01f;
 }
 
@@ -145,7 +145,7 @@ void		events(void)
 	else
 		g_matrix = matrix_matrix_mul(g_matrix, rotation_matrix_y(-1.0f *
 					g_delta_time));
-	if (g_inputs.intensityPLUS == 1 && g_intensity <= 0.95f)
+	if (g_inputs.intensityplus == 1 && g_intensity <= 0.95f)
 		g_intensity += 0.01f;
 	events2();
 }

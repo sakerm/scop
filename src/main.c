@@ -6,7 +6,7 @@
 /*   By: lomeress <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/12 19:26:18 by lomeress          #+#    #+#             */
-/*   Updated: 2019/03/12 21:35:17 by lomeress         ###   ########.fr       */
+/*   Updated: 2019/03/13 18:45:41 by lomeress         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ t_norm	boucle(t_norm n)
 {
 	events();
 	handletime();
+	glClearColor(0.12f, 0.03f, 0.09f, 0.04f);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glUseProgram(n.programid);
 	glUniformMatrix4fv(n.matriceid, 1, GL_FALSE,
@@ -128,9 +129,9 @@ int		main(int ac, char **av)
 	while (glfwWindowShouldClose(n.window) == 0 && glfwGetKey(n.window,
 				GLFW_KEY_ESCAPE) != GLFW_PRESS)
 		n = boucle(n);
+	glDeleteVertexArrays(1, &n.vaoid);
 	glDeleteBuffers(1, &n.vboid);
 	glDeleteBuffers(1, &n.iboid);
-	glDeleteVertexArrays(1, &n.vaoid);
 	glDeleteProgram(n.programid);
 	glfwTerminate();
 	return (0);

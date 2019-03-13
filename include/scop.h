@@ -6,7 +6,7 @@
 /*   By: lomeress <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/12 18:24:19 by lomeress          #+#    #+#             */
-/*   Updated: 2019/03/12 21:24:35 by lomeress         ###   ########.fr       */
+/*   Updated: 2019/03/13 13:09:51 by lomeress         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,8 @@ typedef struct		s_inputs
 	short int		tleft;
 	short int		tfront;
 	short int		tback;
-	short int		intensityPLUS;
-	short int		intensityMOINS;
+	short int		intensityplus;
+	short int		intensitymoins;
 }					t_inputs;
 
 typedef struct		s_uvcalc
@@ -112,20 +112,20 @@ typedef struct		s_buffer_objects
 
 typedef	struct		s_norm
 {
-	GLFWwindow      *window;
-	GLuint          vaoid;
-	GLuint          vboid;
-	GLuint          iboid;
-	GLuint          programid;
-	GLuint          matriceid;
-	int             ve;
-	int             fe;
+	GLFWwindow		*window;
+	GLuint			vaoid;
+	GLuint			vboid;
+	GLuint			iboid;
+	GLuint			programid;
+	GLuint			matriceid;
+	int				ve;
+	int				fe;
 	GLfloat			*v;
-	const GLuint    *f;
-	t_obj           obj;
-	GLuint          intensity;
-	GLuint          textureoupasid;
-	GLuint          texture_id;
+	const GLuint	*f;
+	t_obj			obj;
+	GLuint			intensity;
+	GLuint			textureoupasid;
+	GLuint			texture_id;
 }					t_norm;
 
 extern t_mat4		g_matrix;
